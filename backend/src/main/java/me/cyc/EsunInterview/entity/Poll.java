@@ -1,6 +1,9 @@
 package me.cyc.EsunInterview.entity;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "polls")
@@ -14,7 +17,5 @@ public class Poll
 	private String description;
 
 	@OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
-	private List<Option> options = new ArrayList<>();
-
-	// Getters and Setters
+	private final List<Option> options = new ArrayList<>();
 }
