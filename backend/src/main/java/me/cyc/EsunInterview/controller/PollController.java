@@ -1,9 +1,11 @@
 package me.cyc.EsunInterview.controller;
 
+import me.cyc.EsunInterview.dto.PollRequest;
 import me.cyc.EsunInterview.dto.VoteRequest;
 import me.cyc.EsunInterview.entity.Poll;
 import me.cyc.EsunInterview.service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +23,12 @@ public class PollController
 	public List<Poll> getOngoingPolls()
 	{
 		return pollService.getOngoingPolls(); //回傳正在進行中的投票
+	}
+
+	@PostMapping("/create")
+	public ResponseEntity<Poll> createPoll(@RequestBody PollRequest pollRequest)
+	{
+		return new ResponseEntity<>(pollService.createPoll(pollRequest), HttpStatus.CREATED);
 	}
 
 	@PostMapping("/vote")

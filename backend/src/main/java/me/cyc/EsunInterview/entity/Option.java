@@ -15,4 +15,14 @@ public class Option
 	@ManyToOne
 	@JoinColumn(name = "poll_id")
 	private Poll poll;
+
+	public void setPoll(Poll poll)
+	{
+		this.poll = poll;
+	}
+
+	public void setText(String text)
+	{
+		this.text = text;
+	}
 }
